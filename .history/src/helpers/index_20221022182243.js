@@ -1,0 +1,14 @@
+export const StringValidation = str =>
+  str && typeof str === 'string' && str.length;
+export const LikeCountString = _likeCount => {
+  alert('ss ' + _likeCount);
+
+  if (_likeCount < 1000) {
+    return _likeCount;
+  } else if (_likeCount >= 1000 && _likeCount < 1000000) {
+    return parseFloat(_likeCount / 1000) + ' K';
+  } else if (_likeCount >= 1000000) {
+    alert(_likeCount)
+    return parseFloat(_likeCount / 1000000) + ' M';
+  }
+};

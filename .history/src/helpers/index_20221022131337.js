@@ -1,0 +1,1 @@
+export const StringValidation = str => (str && typeof(str) === 'string' && str.length);

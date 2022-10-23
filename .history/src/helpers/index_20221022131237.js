@@ -1,0 +1,1 @@
+export const IsStringNullOrEmpty = str => (str && typeof(str) === 'string' && str.length);

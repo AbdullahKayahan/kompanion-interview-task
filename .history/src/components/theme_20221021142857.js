@@ -1,0 +1,2 @@
+const BACKGROUND_COLOR = '#FF664C';
+const LABEL_COLOR = '#FFFFFF';
