@@ -62,6 +62,7 @@ const ImageItem = ({
                                 priority: FastImage.priority.normal,
                             }}
                             resizeMode={FastImage.resizeMode.stretch}
+                            defaultSource={require("../../assets/default.jpg")}
                         />
                     )}
                     onSnapToItem={(index) => setCurenntImageIndex(index)}
@@ -85,6 +86,7 @@ const ImageItem = ({
                     <Image
                         source={profilePhoto}
                         style={Styles.profilePhotoStyle}
+                        defaultSource={require("../../assets/default.jpg")}
                     />
                     <Label
                         text={userName}
@@ -122,6 +124,7 @@ const ImageItem = ({
                                     priority: FastImage.priority.normal,
                                 }}
                                 resizeMode={FastImage.resizeMode.stretch}
+                                defaultSource={require("../../assets/default.jpg")}
                             />
                         )}
                         onSnapToItem={(index) => setCurenntImageIndex(index)}
