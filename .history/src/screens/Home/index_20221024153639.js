@@ -289,7 +289,9 @@ const HomePage = ({
                     viewabilityConfig={viewabilityConfig}
                     onViewableItemsChanged={_onVieweableItemsChanged}
                     removeClippedSubviews={true}
-                    renderItem={renderSeachPageItem}
+                    renderItem={({
+                        item, index 
+                    }) => {}}
                 />
             </View>
         );

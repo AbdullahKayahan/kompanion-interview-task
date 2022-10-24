@@ -185,10 +185,7 @@ const HomePage = ({
         );
     };
 
-    //HomePage Item'ları render eder
-    const renderHomePageItem = ({
-        item, index 
-    }) => {
+    const renderHomePageItem = (item) => {
         return item.content.type === "video" ? (
             <VideoItem
                 video={item.content.sources[0]}
@@ -218,39 +215,6 @@ const HomePage = ({
         );
     };
 
-    //SearchItem render fonksiyonu
-    const renderSeachPageItem = ({
-        item, index 
-    }) => {
-        return item.content.type === "video" ? (
-            <VideoItem
-                video={item.content.sources[0]}
-                isGridItem={true}
-                isLiked={item.isLiked}
-                profilePhoto={item.senderUser.profilePhoto}
-                userName={item.senderUser.fullName}
-                likes={item.likeCount}
-                description={item.description}
-                containerStyle={Styles.postCard}
-                isPaused={item.isPaused}
-                onItemPress={() => {
-                    onGridVideoItemPress(item);
-                }}
-            />
-        ) : (
-            <ImageItem
-                isGridItem={true}
-                images={item.content.sources}
-                isLiked={item.isLiked}
-                profilePhoto={item.senderUser.profilePhoto}
-                userName={item.senderUser.fullName}
-                likes={item.likeCount}
-                description={item.description}
-                containerStyle={Styles.postCard}
-            />
-        );
-    };
-
     //Home page tasarımı
     const renderHomePage = () => {
         return (
@@ -265,7 +229,7 @@ const HomePage = ({
                     viewabilityConfig={viewabilityConfig}
                     removeClippedSubviews={true}
                     onViewableItemsChanged={_onVieweableItemsChanged}
-                    renderItem={renderHomePageItem}
+                    renderItem={(item) => renderHomePageItem(item)}
                 />
             </View>
         );
@@ -289,7 +253,37 @@ const HomePage = ({
                     viewabilityConfig={viewabilityConfig}
                     onViewableItemsChanged={_onVieweableItemsChanged}
                     removeClippedSubviews={true}
-                    renderItem={renderSeachPageItem}
+                    renderItem={({
+                        item, index 
+                    }) => {
+                        return item.content.type === "video" ? (
+                            <VideoItem
+                                video={item.content.sources[0]}
+                                isGridItem={true}
+                                isLiked={item.isLiked}
+                                profilePhoto={item.senderUser.profilePhoto}
+                                userName={item.senderUser.fullName}
+                                likes={item.likeCount}
+                                description={item.description}
+                                containerStyle={Styles.postCard}
+                                isPaused={item.isPaused}
+                                onItemPress={() => {
+                                    onGridVideoItemPress(item);
+                                }}
+                            />
+                        ) : (
+                            <ImageItem
+                                isGridItem={true}
+                                images={item.content.sources}
+                                isLiked={item.isLiked}
+                                profilePhoto={item.senderUser.profilePhoto}
+                                userName={item.senderUser.fullName}
+                                likes={item.likeCount}
+                                description={item.description}
+                                containerStyle={Styles.postCard}
+                            />
+                        );
+                    }}
                 />
             </View>
         );

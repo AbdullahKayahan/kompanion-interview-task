@@ -185,7 +185,6 @@ const HomePage = ({
         );
     };
 
-    //HomePage Item'ları render eder
     const renderHomePageItem = ({
         item, index 
     }) => {
@@ -212,39 +211,6 @@ const HomePage = ({
                 userName={item.senderUser.fullName}
                 likes={item.likeCount}
                 title={item.title}
-                description={item.description}
-                containerStyle={Styles.postCard}
-            />
-        );
-    };
-
-    //SearchItem render fonksiyonu
-    const renderSeachPageItem = ({
-        item, index 
-    }) => {
-        return item.content.type === "video" ? (
-            <VideoItem
-                video={item.content.sources[0]}
-                isGridItem={true}
-                isLiked={item.isLiked}
-                profilePhoto={item.senderUser.profilePhoto}
-                userName={item.senderUser.fullName}
-                likes={item.likeCount}
-                description={item.description}
-                containerStyle={Styles.postCard}
-                isPaused={item.isPaused}
-                onItemPress={() => {
-                    onGridVideoItemPress(item);
-                }}
-            />
-        ) : (
-            <ImageItem
-                isGridItem={true}
-                images={item.content.sources}
-                isLiked={item.isLiked}
-                profilePhoto={item.senderUser.profilePhoto}
-                userName={item.senderUser.fullName}
-                likes={item.likeCount}
                 description={item.description}
                 containerStyle={Styles.postCard}
             />
@@ -289,7 +255,37 @@ const HomePage = ({
                     viewabilityConfig={viewabilityConfig}
                     onViewableItemsChanged={_onVieweableItemsChanged}
                     removeClippedSubviews={true}
-                    renderItem={renderSeachPageItem}
+                    renderItem={({
+                        item, index 
+                    }) => {
+                        return item.content.type === "video" ? (
+                            <VideoItem
+                                video={item.content.sources[0]}
+                                isGridItem={true}
+                                isLiked={item.isLiked}
+                                profilePhoto={item.senderUser.profilePhoto}
+                                userName={item.senderUser.fullName}
+                                likes={item.likeCount}
+                                description={item.description}
+                                containerStyle={Styles.postCard}
+                                isPaused={item.isPaused}
+                                onItemPress={() => {
+                                    onGridVideoItemPress(item);
+                                }}
+                            />
+                        ) : (
+                            <ImageItem
+                                isGridItem={true}
+                                images={item.content.sources}
+                                isLiked={item.isLiked}
+                                profilePhoto={item.senderUser.profilePhoto}
+                                userName={item.senderUser.fullName}
+                                likes={item.likeCount}
+                                description={item.description}
+                                containerStyle={Styles.postCard}
+                            />
+                        );
+                    }}
                 />
             </View>
         );
